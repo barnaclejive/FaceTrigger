@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="FaceTriggerExample" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7pr-mz-pRJ">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="352.5"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="M9t-35-3Pa">
+                                <rect key="frame" x="0.0" y="352.5" width="375" height="264.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H1G-XI-F0p">
+                                <rect key="frame" x="154.5" y="627" width="66" height="30"/>
+                                <state key="normal" title="Clear Log"/>
+                                <connections>
+                                    <action selector="clearLogAction" destination="BYZ-38-t0r" eventType="touchUpInside" id="5qM-XQ-izC"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="M9t-35-3Pa" firstAttribute="top" secondItem="7pr-mz-pRJ" secondAttribute="bottom" id="03Z-Zq-JbV"/>
+                            <constraint firstItem="7pr-mz-pRJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="5h7-Gt-8Ib"/>
+                            <constraint firstItem="7pr-mz-pRJ" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Gq4-dc-yQu"/>
+                            <constraint firstItem="H1G-XI-F0p" firstAttribute="top" secondItem="M9t-35-3Pa" secondAttribute="bottom" constant="10" id="HGn-73-0xf"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="H1G-XI-F0p" secondAttribute="bottom" constant="10" id="S4z-EN-Ebu"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="M9t-35-3Pa" secondAttribute="trailing" id="Um6-ob-t2e"/>
+                            <constraint firstItem="7pr-mz-pRJ" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="cuu-NA-cMu"/>
+                            <constraint firstItem="M9t-35-3Pa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="eUO-bx-Vrd"/>
+                            <constraint firstItem="M9t-35-3Pa" firstAttribute="height" secondItem="7pr-mz-pRJ" secondAttribute="height" multiplier="0.75" id="qMF-HN-u9b"/>
+                            <constraint firstItem="H1G-XI-F0p" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="zYs-WO-ti8"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="logTextView" destination="M9t-35-3Pa" id="WeH-7g-TfR"/>
+                        <outlet property="previewContainer" destination="7pr-mz-pRJ" id="pSx-W2-pup"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="120.98950524737631"/>
+        </scene>
+    </scenes>
+</document>
