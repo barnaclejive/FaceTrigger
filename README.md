@@ -67,9 +67,6 @@ TBD
 
 TBD
 
-# Acknowledgment
-
-Thanks [Connor Atherton](https://github.com/ConnorAtherton) for great loaders and [Danil Gontovnik](https://github.com/gontovnik) for kick-start.
 
 # License
 
