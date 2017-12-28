@@ -33,24 +33,16 @@ public class FaceTrigger: NSObject, ARSCNViewDelegate {
     private let sceneViewSessionOptions: ARSession.RunOptions = [.resetTracking, .removeExistingAnchors]
     private let hostView: UIView
     private let delegate: FaceTriggerDelegate
-    private var processors = [FaceTriggerProcessorProtocol]()
+    private var evaluators = [FaceTriggerEvaluatorProtocol]()
     
-    static public let smileThresholdDefault: Float = 0.7
-    static public let blinkThresholdDefault: Float = 0.8
-    static public let mouthPuckerThresholdDefault: Float = 0.7
+    public var smileThreshold: Float = 0.7
+    public var blinkThreshold: Float = 0.8
+    public var mouthPuckerThreshold: Float = 0.7
 
-    public init(hostView: UIView,
-                delegate: FaceTriggerDelegate,
-                smileThreshold: Float = smileThresholdDefault,
-                blinkThreshold: Float = blinkThresholdDefault,
-                mouthPuckerThreshold: Float = mouthPuckerThresholdDefault) {
+    public init(hostView: UIView, delegate: FaceTriggerDelegate) {
         
         self.hostView = hostView
         self.delegate = delegate
-        
-        self.processors.append(SmileProcessor(threshold: smileThreshold))
-        self.processors.append(BlinkProcessor(threshold: blinkThreshold))
-        self.processors.append(MouthPuckerProcessor(threshold: mouthPuckerThreshold))
     }
     
     static public var isSupported: Bool {
@@ -64,6 +56,12 @@ public class FaceTrigger: NSObject, ARSCNViewDelegate {
             return
         }
         
+        // evaluators
+        evaluators.append(SmileEvaluator(threshold: smileThreshold))
+        evaluators.append(BlinkEvaluator(threshold: blinkThreshold))
+        evaluators.append(MouthPuckerEvaluator(threshold: mouthPuckerThreshold))
+        
+        // ARSCNView
         let configuration = ARFaceTrackingConfiguration()
         configuration.isLightEstimationEnabled = true
         
@@ -76,17 +74,21 @@ public class FaceTrigger: NSObject, ARSCNViewDelegate {
         hostView.addSubview(sceneView!)
     }
     
+    public func stop() {
+    
+        pause()
+        sceneView?.removeFromSuperview()
+    }
+    
     public func pause() {
         
-        if let sceneView = self.sceneView {
-            sceneView.session.pause()
-        }
+        sceneView?.session.pause()
     }
     
     public func unpause() {
         
-        if let sceneView = self.sceneView, let configuration = sceneView.session.configuration {
-            sceneView.session.run(configuration, options: sceneViewSessionOptions)
+        if let configuration = sceneView?.session.configuration {
+            sceneView?.session.run(configuration, options: sceneViewSessionOptions)
         }
     }
     
@@ -97,8 +99,8 @@ public class FaceTrigger: NSObject, ARSCNViewDelegate {
         }
         
         let blendShapes = faceAnchor.blendShapes
-        processors.forEach {
-            $0.process(blendShapes, forDelegate: delegate)
+        evaluators.forEach {
+            $0.evaluate(blendShapes, forDelegate: delegate)
         }
     }
 }

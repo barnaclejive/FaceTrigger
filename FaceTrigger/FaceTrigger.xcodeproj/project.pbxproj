@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E2C2E8FC1FF431C2004AE47A /* FaceTriggerProcessors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C2E8FB1FF431C2004AE47A /* FaceTriggerProcessors.swift */; };
+		E2C2E8FC1FF431C2004AE47A /* FaceTriggerEvaluators.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C2E8FB1FF431C2004AE47A /* FaceTriggerEvaluators.swift */; };
 		E2E9FBD81FF2FDEB0072D961 /* FaceTrigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E9FBD71FF2FDEB0072D961 /* FaceTrigger.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		E2C2E8FB1FF431C2004AE47A /* FaceTriggerProcessors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceTriggerProcessors.swift; sourceTree = "<group>"; };
+		E2C2E8FB1FF431C2004AE47A /* FaceTriggerEvaluators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceTriggerEvaluators.swift; sourceTree = "<group>"; };
 		E2E9FBCC1FF2FD3A0072D961 /* FaceTrigger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FaceTrigger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2E9FBD01FF2FD3A0072D961 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E2E9FBD71FF2FDEB0072D961 /* FaceTrigger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceTrigger.swift; sourceTree = "<group>"; };
@@ -49,7 +49,7 @@
 			isa = PBXGroup;
 			children = (
 				E2E9FBD71FF2FDEB0072D961 /* FaceTrigger.swift */,
-				E2C2E8FB1FF431C2004AE47A /* FaceTriggerProcessors.swift */,
+				E2C2E8FB1FF431C2004AE47A /* FaceTriggerEvaluators.swift */,
 				E2E9FBD01FF2FD3A0072D961 /* Info.plist */,
 			);
 			path = FaceTrigger;
@@ -134,7 +134,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E2C2E8FC1FF431C2004AE47A /* FaceTriggerProcessors.swift in Sources */,
+				E2C2E8FC1FF431C2004AE47A /* FaceTriggerEvaluators.swift in Sources */,
 				E2E9FBD81FF2FDEB0072D961 /* FaceTrigger.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

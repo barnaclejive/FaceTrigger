@@ -1,5 +1,5 @@
 //
-//  FaceTriggerProcessors.swift
+//  FaceTriggerEvaluators.swift
 //  FaceTrigger
 //
 //  Created by Mike Peterson on 12/27/17.
@@ -8,13 +8,11 @@
 
 import ARKit
 
-protocol FaceTriggerProcessorProtocol {
-    func process(_ blendShapes: [ARFaceAnchor.BlendShapeLocation : NSNumber], forDelegate delegate: FaceTriggerDelegate)
+protocol FaceTriggerEvaluatorProtocol {
+    func evaluate(_ blendShapes: [ARFaceAnchor.BlendShapeLocation : NSNumber], forDelegate delegate: FaceTriggerDelegate)
 }
 
-
-
-class SmileProcessor: FaceTriggerProcessorProtocol {
+class SmileEvaluator: FaceTriggerEvaluatorProtocol {
     
     private var oldValue  = false
     private let threshold: Float
@@ -23,7 +21,7 @@ class SmileProcessor: FaceTriggerProcessorProtocol {
         self.threshold = threshold
     }
     
-    func process(_ blendShapes: [ARFaceAnchor.BlendShapeLocation : NSNumber], forDelegate delegate: FaceTriggerDelegate) {
+    func evaluate(_ blendShapes: [ARFaceAnchor.BlendShapeLocation : NSNumber], forDelegate delegate: FaceTriggerDelegate) {
         
         if let mouthSmileLeft = blendShapes[.mouthSmileLeft], let mouthSmileRight = blendShapes[.mouthSmileRight] {
             
@@ -39,7 +37,7 @@ class SmileProcessor: FaceTriggerProcessorProtocol {
     }
 }
 
-class BlinkProcessor: FaceTriggerProcessorProtocol {
+class BlinkEvaluator: FaceTriggerEvaluatorProtocol {
     
     private var oldBlinkLeft  = false
     private var oldBlinkRight  = false
@@ -50,68 +48,60 @@ class BlinkProcessor: FaceTriggerProcessorProtocol {
         self.threshold = threshold
     }
     
-    func process(_ blendShapes: [ARFaceAnchor.BlendShapeLocation : NSNumber], forDelegate delegate: FaceTriggerDelegate) {
+    func evaluate(_ blendShapes: [ARFaceAnchor.BlendShapeLocation : NSNumber], forDelegate delegate: FaceTriggerDelegate) {
         
         // note that "left" and "right" blend shapes are mirrored so they are opposite from what a user would consider "left" or "right"
         // the FaceTriggerDelegate functions are named as a user would expect, so an "eyeBlinkLeft" event triggers onBlinkRightDidChange
         let eyeBlinkLeft = blendShapes[.eyeBlinkLeft]
         let eyeBlinkRight = blendShapes[.eyeBlinkRight]
-        
-        var hasNewLeft = false
+
         var newBlinkLeft = false
-        var hasNewRight = false
-        var newBlinkRight = false
-        
-        // left
         if let eyeBlinkLeft = eyeBlinkLeft {
-            
             newBlinkLeft = eyeBlinkLeft.floatValue >= threshold
-            hasNewLeft = true
+        }
+
+        var newBlinkRight = false
+        if let eyeBlinkRight = eyeBlinkRight {
+            newBlinkRight = eyeBlinkRight.floatValue >= threshold
+        }
+
+        // full blink
+        let newBlinkBoth = newBlinkLeft && newBlinkRight
+        if newBlinkBoth != oldBlinkBoth {
+            delegate.onBlinkDidChange?(blinking: newBlinkBoth)
+            if newBlinkBoth {
+                delegate.onBlink?()
+            }
             
+        } else {
+            
+            // left
             if newBlinkLeft != oldBlinkLeft {
                 delegate.onBlinkRightDidChange?(blinkingRight: newBlinkLeft)
                 if newBlinkLeft {
                     delegate.onBlinkRight?()
                 }
+                
+            } else {
+                
+                // right
+                if newBlinkRight != oldBlinkRight {
+                    delegate.onBlinkLeftDidChange?(blinkingLeft: newBlinkRight)
+                    if newBlinkRight {
+                        delegate.onBlinkLeft?()
+                    }
+                }
+                
             }
-            
-            oldBlinkLeft = newBlinkLeft
         }
         
-        // right
-        if let eyeBlinkRight = eyeBlinkRight {
-            
-            newBlinkRight = eyeBlinkRight.floatValue >= threshold
-            hasNewRight = true
-            
-            if newBlinkRight != oldBlinkRight {
-                delegate.onBlinkLeftDidChange?(blinkingLeft: newBlinkRight)
-                if newBlinkRight {
-                    delegate.onBlinkLeft?()
-                }
-            }
-            
-            oldBlinkRight = newBlinkRight
-        }
-        
-        // both
-        if hasNewLeft && hasNewRight  {
-            
-            let newBlinkBoth = newBlinkLeft && newBlinkRight
-            
-            if newBlinkBoth != oldBlinkBoth {
-                delegate.onBlinkDidChange?(blinking: newBlinkBoth)
-                if newBlinkBoth {
-                    delegate.onBlink?()
-                }
-            }
-            
-            oldBlinkBoth = newBlinkBoth
-        }
+        oldBlinkBoth = newBlinkBoth
+        oldBlinkLeft = newBlinkLeft
+        oldBlinkRight = newBlinkRight
     }
 }
 
-class MouthPuckerProcessor: FaceTriggerProcessorProtocol {
+class MouthPuckerEvaluator: FaceTriggerEvaluatorProtocol {
     
     private var oldValue  = false
     private let threshold: Float
@@ -120,7 +110,7 @@ class MouthPuckerProcessor: FaceTriggerProcessorProtocol {
         self.threshold = threshold
     }
     
-    func process(_ blendShapes: [ARFaceAnchor.BlendShapeLocation : NSNumber], forDelegate delegate: FaceTriggerDelegate) {
+    func evaluate(_ blendShapes: [ARFaceAnchor.BlendShapeLocation : NSNumber], forDelegate delegate: FaceTriggerDelegate) {
         
         if let mouthPucker = blendShapes[.mouthPucker] {
             
