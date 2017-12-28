@@ -25,6 +25,15 @@ import ARKit
     
     @objc optional func onMouthPucker()
     @objc optional func onMouthPuckerDidChange(mouthPuckering: Bool)
+    
+    @objc optional func onBrowDown()
+    @objc optional func onBrowDownDidChange(browDown: Bool)
+    
+    @objc optional func onBrowUp()
+    @objc optional func onBrowUpDidChange(browUp: Bool)
+    
+    @objc optional func onSquint()
+    @objc optional func onSquintDidChange(squinting: Bool)
 }
 
 public class FaceTrigger: NSObject, ARSCNViewDelegate {
@@ -37,7 +46,10 @@ public class FaceTrigger: NSObject, ARSCNViewDelegate {
     
     public var smileThreshold: Float = 0.7
     public var blinkThreshold: Float = 0.8
+    public var browDownThreshold: Float = 0.25
+    public var browUpThreshold: Float = 0.95
     public var mouthPuckerThreshold: Float = 0.7
+    public var squintThreshold: Float = 0.8
 
     public init(hostView: UIView, delegate: FaceTriggerDelegate) {
         
@@ -59,8 +71,11 @@ public class FaceTrigger: NSObject, ARSCNViewDelegate {
         // evaluators
         evaluators.append(SmileEvaluator(threshold: smileThreshold))
         evaluators.append(BlinkEvaluator(threshold: blinkThreshold))
+        evaluators.append(BrowDownEvaluator(threshold: browDownThreshold))
+        evaluators.append(BrowUpEvaluator(threshold: browUpThreshold))
         evaluators.append(MouthPuckerEvaluator(threshold: mouthPuckerThreshold))
-        
+        evaluators.append(SquintEvaluator(threshold: squintThreshold))
+
         // ARSCNView
         let configuration = ARFaceTrackingConfiguration()
         configuration.isLightEstimationEnabled = true

@@ -56,6 +56,7 @@ class ViewController: UIViewController {
 
 extension ViewController: FaceTriggerDelegate {
     
+    // smile
     func onSmileDidChange(smiling: Bool) {
         updateLog("onSmileDidChange \(smiling)")
     }
@@ -68,6 +69,7 @@ extension ViewController: FaceTriggerDelegate {
         updateLog("onBlinkLeftDidChange \(blinkingLeft)")
     }
     
+    // blink
     func onBlinkLeft() {
         updateLog("blink left")
     }
@@ -88,11 +90,39 @@ extension ViewController: FaceTriggerDelegate {
         updateLog("blink")
     }
     
+    // brow down
+    func onBrowDownDidChange(browDown: Bool) {
+        updateLog("onBrowDownDidChange \(browDown)")
+    }
+    
+    func onBrowDown() {
+        updateLog("brow down")
+    }
+    
+    // brow up
+    func onBrowUpDidChange(browUp: Bool) {
+        updateLog("onBrowUpDidChange \(browUp)")
+    }
+    
+    func onBrowUp() {
+        updateLog("brow up")
+    }
+    
+    // mouth pucker
     func onMouthPuckerDidChange(mouthPuckering: Bool) {
         updateLog("onMouthPuckerDidChange \(mouthPuckering)")
     }
     
     func onMouthPucker() {
         updateLog("mouth pucker")
+    }
+    
+    // squint
+    func onSquintDidChange(squinting: Bool) {
+        updateLog("onSquintDidChange \(squinting)")
+    }
+    
+    func onSquint() {
+        updateLog("squint")
     }
 }
