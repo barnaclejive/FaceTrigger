@@ -50,6 +50,8 @@ public class FaceTrigger: NSObject, ARSCNViewDelegate {
     public var browUpThreshold: Float = 0.95
     public var mouthPuckerThreshold: Float = 0.7
     public var squintThreshold: Float = 0.8
+    
+    public var hidePreview: Bool = false
 
     public init(hostView: UIView, delegate: FaceTriggerDelegate) {
         
@@ -83,7 +85,7 @@ public class FaceTrigger: NSObject, ARSCNViewDelegate {
         sceneView = ARSCNView(frame: hostView.bounds)
         sceneView!.automaticallyUpdatesLighting = true
         sceneView!.session.run(configuration, options: sceneViewSessionOptions)
-        sceneView!.isHidden = false
+        sceneView!.isHidden = hidePreview
         sceneView!.delegate = self
 
         hostView.addSubview(sceneView!)

@@ -30,6 +30,7 @@ class ViewController: UIViewController {
         super.viewDidAppear(animated)
         
         faceTrigger = FaceTrigger(hostView: previewContainer, delegate: self)
+        faceTrigger?.hidePreview = true
         faceTrigger?.start()
     }
     
