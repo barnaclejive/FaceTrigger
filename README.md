@@ -28,6 +28,10 @@ For first-hand experience run the FaceTriggerExample application on a supported 
 
 FaceTrigger requires a device that supports ARKit face tracking. For example, an actual iPhone X.
 
+[Download Full Video Demo](https://raw.githubusercontent.com/barnaclejive/FaceTrigger/master/demo.mov)
+
+![Demo Still](https://github.com/barnaclejive/FaceTrigger/blob/master/demo.jpg?raw=true)
+
 
 # Installation
 
