@@ -4,7 +4,7 @@ Pod::Spec.new do |s|
   s.summary          = 'Easily use ARKit to detect facial gestures'
  
   s.description      = <<-DESC
-Implement a simple protocol to be notified when the user performs certain facial gestures.
+FaceTrigger is a simple to use class that hides the details of using ARKit's ARSCNView to recognize facial gestures via ARFaceAnchor.BlendShapeLocations 
                        DESC
  
   s.homepage         = 'https://github.com/rsrbk/SmileToUnlock.git'
