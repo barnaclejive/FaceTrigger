@@ -8,7 +8,6 @@
 
 import UIKit
 import FaceTrigger
-import ARKit
 
 class ViewController: UIViewController {
 
@@ -30,7 +29,6 @@ class ViewController: UIViewController {
         super.viewDidAppear(animated)
         
         faceTrigger = FaceTrigger(hostView: previewContainer, delegate: self)
-        faceTrigger?.hidePreview = true
         faceTrigger?.start()
     }
     
