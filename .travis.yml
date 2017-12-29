@@ -1,7 +1,7 @@
-language: swift
+language: objective-c
 os: osx
 osx_image: xcode9.2
-rvm:
- - 2.2
- - jruby
- - rbx-3
+xcode_project: FaceTrigger.xcodeproj
+branches:
+only:
+- master
