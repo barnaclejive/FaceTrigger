@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'FaceTrigger'
-  s.version          = '1.0.0'
+  s.version          = '1.0.1'
   s.summary          = 'Easily use ARKit to detect facial gestures'
  
   s.description      = <<-DESC
