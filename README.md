@@ -18,8 +18,9 @@ Simply create an instance of `FaceTrigger` and register yourself as its delegate
 * Brow Up
 * Squint
 * Mouth Pucker
+* Jaw Open
 
-*Additional gestures can be added by to the project by implementing a new class that conforms to `FaceTriggerEvaluatorProtocol`. Submit a PR!*
+*Additional gestures can be added to the project by implementing a new class that conforms to `FaceTriggerEvaluatorProtocol`. Submit a PR!*
 
 
 # Demo
@@ -184,6 +185,9 @@ In the example above, the `smiling` parameter will be `true` when the user begin
 
   @objc optional func onMouthPucker()
   @objc optional func onMouthPuckerDidChange(mouthPuckering: Bool)
+  
+  @objc optional func onJawOpen()
+  @objc optional func onJawOpenDidChange(jawOpening: Bool)
 
   @objc optional func onBrowDown()
   @objc optional func onBrowDownDidChange(browDown: Bool)
@@ -222,12 +226,13 @@ public var blinkThreshold: Float = 0.8
 public var browDownThreshold: Float = 0.25
 public var browUpThreshold: Float = 0.95
 public var mouthPuckerThreshold: Float = 0.7
+public var jawOpenThreshold: Float = 0.9
 public var squintThreshold: Float = 0.8
 ```
 
 ### Hide Preview
 
-Set the `hidePreview` to `true` if you application does not need to show the video stream of the user's face. Your application will still watch the user's face and your `FaceTriggerDelegate` will still receive calls when a gesture is performed even if the the video stream is not shown to the user.
+Set the `hidePreview` to `true` if your application does not need to show the video stream of the user's face. Your application will still watch the user's face and your `FaceTriggerDelegate` will still receive calls when a gesture is performed even if the the video stream is not shown to the user.
 
 ```swift
 faceTrigger = FaceTrigger(hostView: previewContainer, delegate: self)
