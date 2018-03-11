@@ -26,6 +26,9 @@ import ARKit
     @objc optional func onMouthPucker()
     @objc optional func onMouthPuckerDidChange(mouthPuckering: Bool)
     
+    @objc optional func onJawOpen()
+    @objc optional func onJawOpenDidChange(jawOpening: Bool)
+    
     @objc optional func onBrowDown()
     @objc optional func onBrowDownDidChange(browDown: Bool)
     
@@ -49,6 +52,7 @@ public class FaceTrigger: NSObject, ARSCNViewDelegate {
     public var browDownThreshold: Float = 0.25
     public var browUpThreshold: Float = 0.95
     public var mouthPuckerThreshold: Float = 0.7
+    public var jawOpenThreshold: Float = 0.9
     public var squintThreshold: Float = 0.8
     
     public var hidePreview: Bool = false
@@ -76,6 +80,7 @@ public class FaceTrigger: NSObject, ARSCNViewDelegate {
         evaluators.append(BrowDownEvaluator(threshold: browDownThreshold))
         evaluators.append(BrowUpEvaluator(threshold: browUpThreshold))
         evaluators.append(MouthPuckerEvaluator(threshold: mouthPuckerThreshold))
+        evaluators.append(JawOpenEvaluator(threshold: jawOpenThreshold))
         evaluators.append(SquintEvaluator(threshold: squintThreshold))
 
         // ARSCNView

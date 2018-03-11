@@ -218,3 +218,28 @@ class MouthPuckerEvaluator: FaceTriggerEvaluatorProtocol {
         }
     }
 }
+
+class JawOpenEvaluator: FaceTriggerEvaluatorProtocol {
+    
+    private var oldValue  = false
+    private let threshold: Float
+    
+    init(threshold: Float) {
+        self.threshold = threshold
+    }
+    
+    func evaluate(_ blendShapes: [ARFaceAnchor.BlendShapeLocation : NSNumber], forDelegate delegate: FaceTriggerDelegate) {
+        
+        if let jawOpen = blendShapes[.jawOpen] {
+            
+            let newValue = jawOpen.floatValue >= threshold
+            if newValue != oldValue {
+                delegate.onJawOpenDidChange?(jawOpening: newValue)
+                if newValue {
+                    delegate.onJawOpen?()
+                }
+            }
+            oldValue = newValue
+        }
+    }
+}

@@ -116,6 +116,15 @@ extension ViewController: FaceTriggerDelegate {
         updateLog("mouth pucker")
     }
     
+    // jaw open
+    func onJawOpenDidChange(jawOpening: Bool) {
+        updateLog("onJawOpenDidChange \(jawOpening)")
+    }
+    
+    func onJawOpen() {
+        updateLog("jaw open")
+    }
+    
     // squint
     func onSquintDidChange(squinting: Bool) {
         updateLog("onSquintDidChange \(squinting)")
