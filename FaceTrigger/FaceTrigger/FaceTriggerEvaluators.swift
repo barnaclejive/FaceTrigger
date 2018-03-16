@@ -243,3 +243,53 @@ class JawOpenEvaluator: FaceTriggerEvaluatorProtocol {
         }
     }
 }
+
+class JawLeftEvaluator: FaceTriggerEvaluatorProtocol {
+    
+    private var oldValue  = false
+    private let threshold: Float
+    
+    init(threshold: Float) {
+        self.threshold = threshold
+    }
+    
+    func evaluate(_ blendShapes: [ARFaceAnchor.BlendShapeLocation : NSNumber], forDelegate delegate: FaceTriggerDelegate) {
+        
+        if let jawLeft = blendShapes[.jawLeft] {
+            
+            let newValue = jawLeft.floatValue >= threshold
+            if newValue != oldValue {
+                delegate.onJawLeftDidChange?(jawLefting: newValue)
+                if newValue {
+                    delegate.onJawLeft?()
+                }
+            }
+            oldValue = newValue
+        }
+    }
+}
+
+class JawRightEvaluator: FaceTriggerEvaluatorProtocol {
+    
+    private var oldValue  = false
+    private let threshold: Float
+    
+    init(threshold: Float) {
+        self.threshold = threshold
+    }
+    
+    func evaluate(_ blendShapes: [ARFaceAnchor.BlendShapeLocation : NSNumber], forDelegate delegate: FaceTriggerDelegate) {
+        
+        if let jawRight = blendShapes[.jawRight] {
+            
+            let newValue = jawRight.floatValue >= threshold
+            if newValue != oldValue {
+                delegate.onJawRightDidChange?(jawRighting: newValue)
+                if newValue {
+                    delegate.onJawRight?()
+                }
+            }
+            oldValue = newValue
+        }
+    }
+}
