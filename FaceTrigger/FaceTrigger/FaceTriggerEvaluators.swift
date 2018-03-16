@@ -194,6 +194,31 @@ class BothEvaluator: FaceTriggerEvaluatorProtocol {
     }
 }
 
+class CheekPuffEvaluator: FaceTriggerEvaluatorProtocol {
+    
+    private var oldValue  = false
+    private let threshold: Float
+    
+    init(threshold: Float) {
+        self.threshold = threshold
+    }
+    
+    func evaluate(_ blendShapes: [ARFaceAnchor.BlendShapeLocation : NSNumber], forDelegate delegate: FaceTriggerDelegate) {
+        
+        if let cheekPuff = blendShapes[.cheekPuff] {
+            
+            let newValue = cheekPuff.floatValue >= threshold
+            if newValue != oldValue {
+                delegate.onCheekPuffDidChange?(cheekPuffing: newValue)
+                if newValue {
+                    delegate.onCheekPuff?()
+                }
+            }
+            oldValue = newValue
+        }
+    }
+}
+
 class MouthPuckerEvaluator: FaceTriggerEvaluatorProtocol {
     
     private var oldValue  = false
