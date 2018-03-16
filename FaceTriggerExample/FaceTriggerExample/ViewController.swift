@@ -107,6 +107,15 @@ extension ViewController: FaceTriggerDelegate {
         updateLog("brow up")
     }
     
+    // cheek puff
+    func onCheekPuffDidChange(cheekPuffing: Bool) {
+        updateLog("onCheekPuffDidChange \(cheekPuffing)")
+    }
+    
+    func onCheekPuff() {
+        updateLog("cheek puff")
+    }
+    
     // mouth pucker
     func onMouthPuckerDidChange(mouthPuckering: Bool) {
         updateLog("onMouthPuckerDidChange \(mouthPuckering)")
