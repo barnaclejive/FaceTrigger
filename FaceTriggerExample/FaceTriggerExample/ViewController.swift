@@ -125,6 +125,24 @@ extension ViewController: FaceTriggerDelegate {
         updateLog("jaw open")
     }
     
+    // jaw left
+    func onJawLeftDidChange(jawLefting: Bool) {
+        updateLog("onJawLeftDidChange \(jawLefting)")
+    }
+    
+    func onJawLeft() {
+        updateLog("jaw left")
+    }
+    
+    // jaw right
+    func onJawRightDidChange(jawRighting: Bool) {
+        updateLog("onJawRightDidChange \(jawRighting)")
+    }
+    
+    func onJawRight() {
+        updateLog("jaw right")
+    }
+    
     // squint
     func onSquintDidChange(squinting: Bool) {
         updateLog("onSquintDidChange \(squinting)")
