@@ -17,6 +17,7 @@ Simply create an instance of `FaceTrigger` and register yourself as its delegate
 * Brow Down
 * Brow Up
 * Squint
+* Cheek Puff
 * Mouth Pucker
 * Jaw Open
 * Jaw Left
@@ -184,6 +185,9 @@ In the example above, the `smiling` parameter will be `true` when the user begin
 
   @objc optional func onBlinkRight()
   @objc optional func onBlinkRightDidChange(blinkingRight: Bool)
+  
+  @objc optional func onCheekPuff()
+  @objc optional func onCheekPuffDidChange(cheekPuffing: Bool)
 
   @objc optional func onMouthPucker()
   @objc optional func onMouthPuckerDidChange(mouthPuckering: Bool)
@@ -233,6 +237,7 @@ public var smileThreshold: Float = 0.7
 public var blinkThreshold: Float = 0.8
 public var browDownThreshold: Float = 0.25
 public var browUpThreshold: Float = 0.95
+public var cheekPuffThreshold: Float = 0.2
 public var mouthPuckerThreshold: Float = 0.7
 public var jawOpenThreshold: Float = 0.9
 public var jawLeftThreshold: Float = 0.3
