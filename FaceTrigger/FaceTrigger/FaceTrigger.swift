@@ -57,9 +57,9 @@ public class FaceTrigger: NSObject, ARSCNViewDelegate {
     private var evaluators = [FaceTriggerEvaluatorProtocol]()
     
     public var smileThreshold: Float = 0.7
-    public var blinkThreshold: Float = 0.75
-    public var browDownThreshold: Float = 0.5
-    public var browUpThreshold: Float = 0.7
+    public var blinkThreshold: Float = 0.8
+    public var browDownThreshold: Float = 0.25
+    public var browUpThreshold: Float = 0.95
     public var cheekPuffThreshold: Float = 0.2
     public var mouthPuckerThreshold: Float = 0.7
     public var jawOpenThreshold: Float = 0.9
@@ -67,7 +67,7 @@ public class FaceTrigger: NSObject, ARSCNViewDelegate {
     public var jawRightThreshold: Float = 0.3
     public var squintThreshold: Float = 0.8
     
-    public var hidePreview: Bool = false //This can deactivate the camera
+    public var hidePreview: Bool = false
     
     public init(hostView: UIView, delegate: FaceTriggerDelegate) {
         
