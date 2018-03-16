@@ -19,6 +19,8 @@ Simply create an instance of `FaceTrigger` and register yourself as its delegate
 * Squint
 * Mouth Pucker
 * Jaw Open
+* Jaw Left
+* Jaw Right
 
 *Additional gestures can be added to the project by implementing a new class that conforms to `FaceTriggerEvaluatorProtocol`. Submit a PR!*
 
@@ -188,7 +190,13 @@ In the example above, the `smiling` parameter will be `true` when the user begin
   
   @objc optional func onJawOpen()
   @objc optional func onJawOpenDidChange(jawOpening: Bool)
-
+    
+  @objc optional func onJawLeft()
+  @objc optional func onJawLeftDidChange(jawLefting: Bool)
+    
+  @objc optional func onJawRight()
+  @objc optional func onJawRightDidChange(jawRighting: Bool)
+    
   @objc optional func onBrowDown()
   @objc optional func onBrowDownDidChange(browDown: Bool)
 
@@ -227,6 +235,8 @@ public var browDownThreshold: Float = 0.25
 public var browUpThreshold: Float = 0.95
 public var mouthPuckerThreshold: Float = 0.7
 public var jawOpenThreshold: Float = 0.9
+public var jawLeftThreshold: Float = 0.3
+public var jawRightThreshold: Float = 0.3
 public var squintThreshold: Float = 0.8
 ```
 
