@@ -279,8 +279,8 @@ class JawLeftEvaluator: FaceTriggerEvaluatorProtocol {
     }
     
     func evaluate(_ blendShapes: [ARFaceAnchor.BlendShapeLocation : NSNumber], forDelegate delegate: FaceTriggerDelegate) {
-        
-        if let jawLeft = blendShapes[.jawLeft] {
+        // note that "left" and "right" blend shapes are mirrored so they are opposite from what a user would consider "left" or "right"
+        if let jawLeft = blendShapes[.jawRight] {
             
             let newValue = jawLeft.floatValue >= threshold
             if newValue != oldValue {
@@ -304,8 +304,8 @@ class JawRightEvaluator: FaceTriggerEvaluatorProtocol {
     }
     
     func evaluate(_ blendShapes: [ARFaceAnchor.BlendShapeLocation : NSNumber], forDelegate delegate: FaceTriggerDelegate) {
-        
-        if let jawRight = blendShapes[.jawRight] {
+        // note that "left" and "right" blend shapes are mirrored so they are opposite from what a user would consider "left" or "right"
+        if let jawRight = blendShapes[.jawLeft] {
             
             let newValue = jawRight.floatValue >= threshold
             if newValue != oldValue {
