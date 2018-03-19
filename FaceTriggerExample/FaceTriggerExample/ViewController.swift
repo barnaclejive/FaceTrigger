@@ -107,6 +107,15 @@ extension ViewController: FaceTriggerDelegate {
         updateLog("brow up")
     }
     
+    // cheek puff
+    func onCheekPuffDidChange(cheekPuffing: Bool) {
+        updateLog("onCheekPuffDidChange \(cheekPuffing)")
+    }
+    
+    func onCheekPuff() {
+        updateLog("cheek puff")
+    }
+    
     // mouth pucker
     func onMouthPuckerDidChange(mouthPuckering: Bool) {
         updateLog("onMouthPuckerDidChange \(mouthPuckering)")
@@ -123,6 +132,24 @@ extension ViewController: FaceTriggerDelegate {
     
     func onJawOpen() {
         updateLog("jaw open")
+    }
+    
+    // jaw left
+    func onJawLeftDidChange(jawLefting: Bool) {
+        updateLog("onJawLeftDidChange \(jawLefting)")
+    }
+    
+    func onJawLeft() {
+        updateLog("jaw left")
+    }
+    
+    // jaw right
+    func onJawRightDidChange(jawRighting: Bool) {
+        updateLog("onJawRightDidChange \(jawRighting)")
+    }
+    
+    func onJawRight() {
+        updateLog("jaw right")
     }
     
     // squint

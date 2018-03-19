@@ -194,6 +194,31 @@ class BothEvaluator: FaceTriggerEvaluatorProtocol {
     }
 }
 
+class CheekPuffEvaluator: FaceTriggerEvaluatorProtocol {
+    
+    private var oldValue  = false
+    private let threshold: Float
+    
+    init(threshold: Float) {
+        self.threshold = threshold
+    }
+    
+    func evaluate(_ blendShapes: [ARFaceAnchor.BlendShapeLocation : NSNumber], forDelegate delegate: FaceTriggerDelegate) {
+        
+        if let cheekPuff = blendShapes[.cheekPuff] {
+            
+            let newValue = cheekPuff.floatValue >= threshold
+            if newValue != oldValue {
+                delegate.onCheekPuffDidChange?(cheekPuffing: newValue)
+                if newValue {
+                    delegate.onCheekPuff?()
+                }
+            }
+            oldValue = newValue
+        }
+    }
+}
+
 class MouthPuckerEvaluator: FaceTriggerEvaluatorProtocol {
     
     private var oldValue  = false
@@ -237,6 +262,56 @@ class JawOpenEvaluator: FaceTriggerEvaluatorProtocol {
                 delegate.onJawOpenDidChange?(jawOpening: newValue)
                 if newValue {
                     delegate.onJawOpen?()
+                }
+            }
+            oldValue = newValue
+        }
+    }
+}
+
+class JawLeftEvaluator: FaceTriggerEvaluatorProtocol {
+    
+    private var oldValue  = false
+    private let threshold: Float
+    
+    init(threshold: Float) {
+        self.threshold = threshold
+    }
+    
+    func evaluate(_ blendShapes: [ARFaceAnchor.BlendShapeLocation : NSNumber], forDelegate delegate: FaceTriggerDelegate) {
+        // note that "left" and "right" blend shapes are mirrored so they are opposite from what a user would consider "left" or "right"
+        if let jawLeft = blendShapes[.jawRight] {
+            
+            let newValue = jawLeft.floatValue >= threshold
+            if newValue != oldValue {
+                delegate.onJawLeftDidChange?(jawLefting: newValue)
+                if newValue {
+                    delegate.onJawLeft?()
+                }
+            }
+            oldValue = newValue
+        }
+    }
+}
+
+class JawRightEvaluator: FaceTriggerEvaluatorProtocol {
+    
+    private var oldValue  = false
+    private let threshold: Float
+    
+    init(threshold: Float) {
+        self.threshold = threshold
+    }
+    
+    func evaluate(_ blendShapes: [ARFaceAnchor.BlendShapeLocation : NSNumber], forDelegate delegate: FaceTriggerDelegate) {
+        // note that "left" and "right" blend shapes are mirrored so they are opposite from what a user would consider "left" or "right"
+        if let jawRight = blendShapes[.jawLeft] {
+            
+            let newValue = jawRight.floatValue >= threshold
+            if newValue != oldValue {
+                delegate.onJawRightDidChange?(jawRighting: newValue)
+                if newValue {
+                    delegate.onJawRight?()
                 }
             }
             oldValue = newValue

@@ -23,11 +23,20 @@ import ARKit
     @objc optional func onBlinkRight()
     @objc optional func onBlinkRightDidChange(blinkingRight: Bool)
     
+    @objc optional func onCheekPuff()
+    @objc optional func onCheekPuffDidChange(cheekPuffing: Bool)
+    
     @objc optional func onMouthPucker()
     @objc optional func onMouthPuckerDidChange(mouthPuckering: Bool)
     
     @objc optional func onJawOpen()
     @objc optional func onJawOpenDidChange(jawOpening: Bool)
+    
+    @objc optional func onJawLeft()
+    @objc optional func onJawLeftDidChange(jawLefting: Bool)
+    
+    @objc optional func onJawRight()
+    @objc optional func onJawRightDidChange(jawRighting: Bool)
     
     @objc optional func onBrowDown()
     @objc optional func onBrowDownDidChange(browDown: Bool)
@@ -51,12 +60,15 @@ public class FaceTrigger: NSObject, ARSCNViewDelegate {
     public var blinkThreshold: Float = 0.8
     public var browDownThreshold: Float = 0.25
     public var browUpThreshold: Float = 0.95
+    public var cheekPuffThreshold: Float = 0.2
     public var mouthPuckerThreshold: Float = 0.7
     public var jawOpenThreshold: Float = 0.9
+    public var jawLeftThreshold: Float = 0.3
+    public var jawRightThreshold: Float = 0.3
     public var squintThreshold: Float = 0.8
     
     public var hidePreview: Bool = false
-
+    
     public init(hostView: UIView, delegate: FaceTriggerDelegate) {
         
         self.hostView = hostView
@@ -79,10 +91,13 @@ public class FaceTrigger: NSObject, ARSCNViewDelegate {
         evaluators.append(BlinkEvaluator(threshold: blinkThreshold))
         evaluators.append(BrowDownEvaluator(threshold: browDownThreshold))
         evaluators.append(BrowUpEvaluator(threshold: browUpThreshold))
+        evaluators.append(CheekPuffEvaluator(threshold: cheekPuffThreshold))
         evaluators.append(MouthPuckerEvaluator(threshold: mouthPuckerThreshold))
         evaluators.append(JawOpenEvaluator(threshold: jawOpenThreshold))
+        evaluators.append(JawLeftEvaluator(threshold: jawLeftThreshold))
+        evaluators.append(JawRightEvaluator(threshold: jawRightThreshold))
         evaluators.append(SquintEvaluator(threshold: squintThreshold))
-
+        
         // ARSCNView
         let configuration = ARFaceTrackingConfiguration()
         configuration.isLightEstimationEnabled = true
@@ -92,12 +107,12 @@ public class FaceTrigger: NSObject, ARSCNViewDelegate {
         sceneView!.session.run(configuration, options: sceneViewSessionOptions)
         sceneView!.isHidden = hidePreview
         sceneView!.delegate = self
-
+        
         hostView.addSubview(sceneView!)
     }
     
     public func stop() {
-    
+        
         pause()
         sceneView?.removeFromSuperview()
     }
