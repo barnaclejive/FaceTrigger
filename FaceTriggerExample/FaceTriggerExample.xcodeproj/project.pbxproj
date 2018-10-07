@@ -7,26 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E28C2D51216A4ED60080D02D /* FaceTrigger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E28C2D50216A4E6E0080D02D /* FaceTrigger.framework */; };
+		E28C2D52216A4ED60080D02D /* FaceTrigger.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E28C2D50216A4E6E0080D02D /* FaceTrigger.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E2E9FBE71FF307720072D961 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E9FBE61FF307720072D961 /* AppDelegate.swift */; };
 		E2E9FBE91FF307720072D961 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2E9FBE81FF307720072D961 /* ViewController.swift */; };
 		E2E9FBEC1FF307720072D961 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2E9FBEA1FF307720072D961 /* Main.storyboard */; };
 		E2E9FBEE1FF307720072D961 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E2E9FBED1FF307720072D961 /* Assets.xcassets */; };
 		E2E9FBF11FF307720072D961 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2E9FBEF1FF307720072D961 /* LaunchScreen.storyboard */; };
-		E2E9FBFE1FF308CE0072D961 /* FaceTrigger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2E9FBFD1FF3086D0072D961 /* FaceTrigger.framework */; };
-		E2E9FBFF1FF308CE0072D961 /* FaceTrigger.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E2E9FBFD1FF3086D0072D961 /* FaceTrigger.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		E2E9FBFC1FF3086D0072D961 /* PBXContainerItemProxy */ = {
+		E28C2D4F216A4E6E0080D02D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = E2E9FBF81FF3086D0072D961 /* FaceTrigger.xcodeproj */;
+			containerPortal = E28C2D4B216A4E6E0080D02D /* FaceTrigger.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = E2E9FBCC1FF2FD3A0072D961;
 			remoteInfo = FaceTrigger;
 		};
-		E2E9FC001FF308CE0072D961 /* PBXContainerItemProxy */ = {
+		E28C2D53216A4ED60080D02D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = E2E9FBF81FF3086D0072D961 /* FaceTrigger.xcodeproj */;
+			containerPortal = E28C2D4B216A4E6E0080D02D /* FaceTrigger.xcodeproj */;
 			proxyType = 1;
 			remoteGlobalIDString = E2E9FBCB1FF2FD3A0072D961;
 			remoteInfo = FaceTrigger;
@@ -40,7 +40,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				E2E9FBFF1FF308CE0072D961 /* FaceTrigger.framework in Embed Frameworks */,
+				E28C2D52216A4ED60080D02D /* FaceTrigger.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -48,6 +48,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		E28C2D4B216A4E6E0080D02D /* FaceTrigger.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FaceTrigger.xcodeproj; path = ../FaceTrigger/FaceTrigger.xcodeproj; sourceTree = "<group>"; };
 		E2E9FBE31FF307720072D961 /* FaceTriggerExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FaceTriggerExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2E9FBE61FF307720072D961 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E2E9FBE81FF307720072D961 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -55,7 +56,6 @@
 		E2E9FBED1FF307720072D961 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E2E9FBF01FF307720072D961 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E2E9FBF21FF307720072D961 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E2E9FBF81FF3086D0072D961 /* FaceTrigger.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FaceTrigger.xcodeproj; path = ../FaceTrigger/FaceTrigger.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,17 +63,25 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E2E9FBFE1FF308CE0072D961 /* FaceTrigger.framework in Frameworks */,
+				E28C2D51216A4ED60080D02D /* FaceTrigger.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E28C2D4C216A4E6E0080D02D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E28C2D50216A4E6E0080D02D /* FaceTrigger.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		E2E9FBDA1FF307720072D961 = {
 			isa = PBXGroup;
 			children = (
-				E2E9FBF81FF3086D0072D961 /* FaceTrigger.xcodeproj */,
+				E28C2D4B216A4E6E0080D02D /* FaceTrigger.xcodeproj */,
 				E2E9FBE51FF307720072D961 /* FaceTriggerExample */,
 				E2E9FBE41FF307720072D961 /* Products */,
 			);
@@ -100,14 +108,6 @@
 			path = FaceTriggerExample;
 			sourceTree = "<group>";
 		};
-		E2E9FBF91FF3086D0072D961 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				E2E9FBFD1FF3086D0072D961 /* FaceTrigger.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -123,7 +123,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				E2E9FC011FF308CE0072D961 /* PBXTargetDependency */,
+				E28C2D54216A4ED60080D02D /* PBXTargetDependency */,
 			);
 			name = FaceTriggerExample;
 			productName = FaceTriggerExample;
@@ -137,11 +137,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = Blinkloop;
 				TargetAttributes = {
 					E2E9FBE21FF307720072D961 = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -159,8 +160,8 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = E2E9FBF91FF3086D0072D961 /* Products */;
-					ProjectRef = E2E9FBF81FF3086D0072D961 /* FaceTrigger.xcodeproj */;
+					ProductGroup = E28C2D4C216A4E6E0080D02D /* Products */;
+					ProjectRef = E28C2D4B216A4E6E0080D02D /* FaceTrigger.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -171,11 +172,11 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		E2E9FBFD1FF3086D0072D961 /* FaceTrigger.framework */ = {
+		E28C2D50216A4E6E0080D02D /* FaceTrigger.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
 			path = FaceTrigger.framework;
-			remoteRef = E2E9FBFC1FF3086D0072D961 /* PBXContainerItemProxy */;
+			remoteRef = E28C2D4F216A4E6E0080D02D /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -206,10 +207,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		E2E9FC011FF308CE0072D961 /* PBXTargetDependency */ = {
+		E28C2D54216A4ED60080D02D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = FaceTrigger;
-			targetProxy = E2E9FC001FF308CE0072D961 /* PBXContainerItemProxy */;
+			targetProxy = E28C2D53216A4ED60080D02D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -247,6 +248,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -254,6 +256,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -304,6 +307,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -311,6 +315,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -346,12 +351,12 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = JN7MAJGLHD;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = FaceTriggerExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.blinkloop.FaceTriggerExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -362,12 +367,12 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = JN7MAJGLHD;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = FaceTriggerExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.blinkloop.FaceTriggerExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

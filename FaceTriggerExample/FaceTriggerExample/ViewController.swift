@@ -21,8 +21,8 @@ class ViewController: UIViewController {
         
         logTextView.text = nil
         
-        NotificationCenter.default.addObserver(self, selector: #selector(pause), name: NSNotification.Name.UIApplicationWillResignActive, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(unpause), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(pause), name: UIApplication.willResignActiveNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(unpause), name: UIApplication.didBecomeActiveNotification, object: nil)
     }
 
     override func viewDidAppear(_ animated: Bool) {

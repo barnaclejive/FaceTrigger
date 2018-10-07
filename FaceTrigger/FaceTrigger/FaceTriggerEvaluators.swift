@@ -39,21 +39,21 @@ class SmileEvaluator: FaceTriggerEvaluatorProtocol {
 
 class BlinkEvaluator: BothEvaluator {
     
-    func onBoth(delegate: FaceTriggerDelegate, newBoth: Bool) {
+    override func onBoth(_ delegate: FaceTriggerDelegate, _ newBoth: Bool) {
         delegate.onBlinkDidChange?(blinking: newBoth)
         if newBoth {
             delegate.onBlink?()
         }
     }
     
-    func onLeft(delegate: FaceTriggerDelegate, newLeft: Bool) {
+    override func onLeft(_ delegate: FaceTriggerDelegate, _ newLeft: Bool) {
         delegate.onBlinkLeftDidChange?(blinkingLeft: newLeft)
         if newLeft {
             delegate.onBlinkLeft?()
         }
     }
     
-    func onRight(delegate: FaceTriggerDelegate, newRight: Bool) {
+    override func onRight(_ delegate: FaceTriggerDelegate, _ newRight: Bool) {
         delegate.onBlinkRightDidChange?(blinkingRight: newRight)
         if newRight {
             delegate.onBlinkRight?()
@@ -61,27 +61,21 @@ class BlinkEvaluator: BothEvaluator {
     }
     
     init(threshold: Float) {
-        super.init(threshold: threshold, leftKey: .eyeBlinkLeft, rightKey: .eyeBlinkRight, onBoth: onBoth, onLeft: onLeft, onRight: onRight)
+        super.init(threshold: threshold, leftKey: .eyeBlinkLeft, rightKey: .eyeBlinkRight)
     }
 }
 
 class BrowDownEvaluator: BothEvaluator {
     
-    func onBoth(delegate: FaceTriggerDelegate, newBoth: Bool) {
+    override func onBoth(_ delegate: FaceTriggerDelegate, _ newBoth: Bool) {
         delegate.onBrowDownDidChange?(browDown: newBoth)
         if newBoth {
             delegate.onBrowDown?()
         }
     }
     
-    func onLeft(delegate: FaceTriggerDelegate, newLeft: Bool) {
-    }
-    
-    func onRight(delegate: FaceTriggerDelegate, newRight: Bool) {
-    }
-    
     init(threshold: Float) {
-        super.init(threshold: threshold, leftKey: .browDownLeft, rightKey: .browDownRight, onBoth: onBoth, onLeft: onLeft, onRight: onRight)
+        super.init(threshold: threshold, leftKey: .browDownLeft, rightKey: .browDownRight)
     }
 }
 
@@ -112,32 +106,29 @@ class BrowUpEvaluator: FaceTriggerEvaluatorProtocol {
 
 class SquintEvaluator: BothEvaluator {
     
-    func onBoth(delegate: FaceTriggerDelegate, newBoth: Bool) {
+    override func onBoth(_ delegate: FaceTriggerDelegate, _ newBoth: Bool) {
         delegate.onSquintDidChange?(squinting: newBoth)
         if newBoth {
             delegate.onSquint?()
         }
     }
     
-    func onLeft(delegate: FaceTriggerDelegate, newLeft: Bool) {
-    }
-    
-    func onRight(delegate: FaceTriggerDelegate, newRight: Bool) {
-    }
-    
     init(threshold: Float) {
-        super.init(threshold: threshold, leftKey: .eyeSquintLeft, rightKey: .eyeSquintRight, onBoth: onBoth, onLeft: onLeft, onRight: onRight)
+        super.init(threshold: threshold, leftKey: .eyeSquintLeft, rightKey: .eyeSquintRight)
     }
 }
 
-class BothEvaluator: FaceTriggerEvaluatorProtocol {
+protocol BothEvaluatorProtocol {
+    func onBoth(_: FaceTriggerDelegate, _: Bool) -> Void
+    func onLeft(_: FaceTriggerDelegate, _: Bool) -> Void
+    func onRight(_: FaceTriggerDelegate, _: Bool) -> Void
+}
+
+class BothEvaluator: FaceTriggerEvaluatorProtocol, BothEvaluatorProtocol {
     
     private let threshold: Float
     private let leftKey: ARFaceAnchor.BlendShapeLocation
     private let rightKey: ARFaceAnchor.BlendShapeLocation
-    private let onBoth: (FaceTriggerDelegate, Bool) -> Void
-    private let onLeft: (FaceTriggerDelegate, Bool) -> Void
-    private let onRight: (FaceTriggerDelegate, Bool) -> Void
 
     private var oldLeft  = false
     private var oldRight  = false
@@ -145,19 +136,21 @@ class BothEvaluator: FaceTriggerEvaluatorProtocol {
     
     init(threshold: Float,
          leftKey: ARFaceAnchor.BlendShapeLocation ,
-         rightKey: ARFaceAnchor.BlendShapeLocation,
-         onBoth: @escaping (FaceTriggerDelegate, Bool) -> Void,
-         onLeft: @escaping (FaceTriggerDelegate, Bool) -> Void,
-         onRight: @escaping (FaceTriggerDelegate, Bool) -> Void) {
+         rightKey: ARFaceAnchor.BlendShapeLocation) {
         
         self.threshold = threshold
         
         self.leftKey = leftKey
         self.rightKey = rightKey
-        
-        self.onBoth = onBoth
-        self.onLeft = onLeft
-        self.onRight = onRight
+    }
+    
+    func onBoth(_ delegate: FaceTriggerDelegate, _ newBoth: Bool) {
+    }
+    
+    func onLeft(_ delegate: FaceTriggerDelegate, _ newLeft: Bool) {
+    }
+    
+    func onRight(_ delegate: FaceTriggerDelegate, _ newRight: Bool) {
     }
     
     func evaluate(_ blendShapes: [ARFaceAnchor.BlendShapeLocation : NSNumber], forDelegate delegate: FaceTriggerDelegate) {

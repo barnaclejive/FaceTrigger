@@ -30,7 +30,7 @@ Simply create an instance of `FaceTrigger` and register yourself as its delegate
 
 For first-hand experience run the FaceTriggerExample application on a supported device.
 
-FaceTrigger requires a device that supports ARKit face tracking. For example, an actual iPhone X.
+FaceTrigger requires a device that supports ARKit face tracking such as an iPhone X, XS, or XR.
 
 [Download Full Video Demo](https://raw.githubusercontent.com/barnaclejive/FaceTrigger/master/demo.mov)
 
@@ -185,22 +185,22 @@ In the example above, the `smiling` parameter will be `true` when the user begin
 
   @objc optional func onBlinkRight()
   @objc optional func onBlinkRightDidChange(blinkingRight: Bool)
-  
+
   @objc optional func onCheekPuff()
   @objc optional func onCheekPuffDidChange(cheekPuffing: Bool)
 
   @objc optional func onMouthPucker()
   @objc optional func onMouthPuckerDidChange(mouthPuckering: Bool)
-  
+
   @objc optional func onJawOpen()
   @objc optional func onJawOpenDidChange(jawOpening: Bool)
-    
+
   @objc optional func onJawLeft()
   @objc optional func onJawLeftDidChange(jawLefting: Bool)
-    
+
   @objc optional func onJawRight()
   @objc optional func onJawRightDidChange(jawRighting: Bool)
-    
+
   @objc optional func onBrowDown()
   @objc optional func onBrowDownDidChange(browDown: Bool)
 
@@ -259,4 +259,4 @@ faceTrigger?.start()
 
 The MIT License (MIT)
 
-Copyright (c) 2017 Michael Peterson [Blinkloop](http://blinkloop.com)
+Copyright (c) 2018 Michael Peterson [Blinkloop](http://blinkloop.com)
